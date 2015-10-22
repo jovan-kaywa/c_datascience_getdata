@@ -127,7 +127,7 @@ View(tidy)
 ## Links:
 [Merge files](https://class.coursera.org/getdata-033/forum/thread?thread_id=141)
 
-[Rename variables in merged file with featerus descriptions](Link http://stackoverflow.com/questions/25468003/rename-columns-from-external-file-in-r)
+[Rename variables in merged file with featerus descriptions](http://stackoverflow.com/questions/25468003/rename-columns-from-external-file-in-r)
 
 [Fix duplicated column names](http://stackoverflow.com/questions/28549045/dplyr-select-error-found-duplicated-column-name)
 
