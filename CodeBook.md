@@ -77,6 +77,10 @@ std(): Standard deviation
 
 ## Sources
 [Getting and Cleaning Data](https://www.coursera.org/course/getdata)
+[Merge files](https://class.coursera.org/getdata-033/forum/thread?thread_id=141)
+[Rename variables in merged file with featerus descriptions](http://stackoverflow.com/questions/25468003/rename-columns-from-external-file-in-r)
+[Fix duplicated column names](http://stackoverflow.com/questions/28549045/dplyr-select-error-found-duplicated-column-name)
+[Remove first variable](http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/)
 
 ## License
 Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
