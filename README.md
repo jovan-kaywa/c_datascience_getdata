@@ -6,6 +6,21 @@ date: "October 22, 2015"
 
 Here is the explanation of every step needed in order to create run_analysis.R script that you can use to generate .csv file with tidy data which has average values per variable, grouped by subject and activity
 
+###Guide to create the tidy data file
+1. Download the [dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+2. Unpack it in your working directory (you can also just run the script and it will download and unpack the files)
+3. Merge training set, subjects and activites
+4. Merge test set, subjects and activites
+5. Merge test and training sets
+6. Rename all variables with labels from the features.txt file
+7. Make variable names unique
+8.filter only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
+9. Make another dataset with grouped Subject and Activity variables
+10. Summarize each variable to get their mean values
+11. Make tidy dataset
+12. Create .csv table with tidy dataset
+
+### Commented script
 ```{r}
 # liraries dplyr (to work with tables) and respahe2 (to make tidy data)
 # to install dplyr libray just uncomment next line
@@ -109,3 +124,20 @@ summary <- summarize_each(activitySubjectGroups,funs(mean))
 tidy <- melt(summary, id.vars = c("Subject", "Activity"))
 View(tidy)
 ```
+## Links:
+[Merge files](https://class.coursera.org/getdata-033/forum/thread?thread_id=141)
+
+[Rename variables in merged file with featerus descriptions](Link http://stackoverflow.com/questions/25468003/rename-columns-from-external-file-in-r)
+
+[Fix duplicated column names](http://stackoverflow.com/questions/28549045/dplyr-select-error-found-duplicated-column-name)
+
+[Remove first variable](http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/)
+
+## License:
+Use of this dataset in publications must be acknowledged by referencing the following publication [1] 
+
+[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+
+This dataset is distributed AS-IS and no responsibility implied or explicit can be addressed to the authors or their institutions for its use or misuse. Any commercial use is prohibited.
+
+Jorge L. Reyes-Ortiz, Alessandro Ghio, Luca Oneto, Davide Anguita. November 2012.
