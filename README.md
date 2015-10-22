@@ -1,5 +1,5 @@
 ---
-title: "Readme for Johns Hopkins course "Getting and Cleaning Data" on Coursera"
+title: "Readme for Johns Hopkins course 'Getting and Cleaning Data' on Coursera"
 author: "Jovan Milicevic"
 date: "October 22, 2015"
 ---
