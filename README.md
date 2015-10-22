@@ -13,30 +13,21 @@ Here is the explanation of every step needed in order to create run_analysis.R s
 # load dplyr libray
 ```{r}
 library(dplyr)
-```
+
 # load reshape2 [ackage]
-```{r}
 library(reshape2)
-```
 # create data folder to store all our downloaded data files
-```{r}
 if(!file.exists("data")){dir.create("data")}
-```
+
 # download project zip file and rename it to getdata.zip
-```{r}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl,destfile="./data/getdata.zip",method="curl")
-```
 # add date of download to be able to check if data changed later 
-```{r}
 dateDownloaded <- date()
-```
 # unzip data
-```{r}
 unzip("data/getdata.zip", exdir = "./data/")
-```
+
 # read all needed data test and train files, and also activity labels
-```{r}
 X_test <- read.table("data/UCI HAR Dataset/test/X_test.txt", quote="\"")
 subject_test <- read.table("data/UCI HAR Dataset/test/subject_test.txt", quote="\"")
 y_test <- read.table("data/UCI HAR Dataset/test/y_test.txt", quote="\"")
@@ -46,22 +37,20 @@ subject_train <- read.table("data/UCI HAR Dataset/train/subject_train.txt", quot
 y_train <- read.table("data/UCI HAR Dataset/train/y_train.txt", quote="\"")
 
 activity_labels <- read.table("data/UCI HAR Dataset/activity_labels.txt", quote="\"")
-```
+
 # read features.txt to get variables description
-```{r}
 features <- read.table("data/UCI HAR Dataset/features.txt", quote="\"")
-```
+
 # Merge files
 # https://class.coursera.org/getdata-033/forum/thread?thread_id=141
 # merge test subject and activity files to create a dataset which 
 # have all needed information
 
 #merge test file with subjects
-```{r}
 testSubjectMerge <- cbind (X_test,subject_test)
 # check variables, the subject variable is on the end
 head(testSubjectMerge)
-```
+
 #merge test file including subjects with activities
 testFinal <- cbind (testSubjectMerge,y_test)
 # check variables, the activity variable is on the end
@@ -119,3 +108,4 @@ summary <- summarize_each(activitySubjectGroups,funs(mean))
 # http://seananderson.ca/2013/10/19/reshape.html
 tidy <- melt(summary, id.vars = c("Subject", "Activity"))
 View(tidy)
+```
