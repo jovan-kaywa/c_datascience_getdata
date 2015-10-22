@@ -7,11 +7,12 @@ output: html_document
 
 Here is the explanation of every step needed in order to create run_analysis.R script that you can use to generate .csv file with tidy data which has average values per variable, grouped by subject and activity
 
+```{r}
 # liraries dplyr (to work with tables) and respahe2 (to make tidy data)
 # to install dplyr libray just uncomment next line
 # install.packages("dplyr")
 # load dplyr libray
-```{r}
+
 library(dplyr)
 
 # load reshape2 [ackage]
