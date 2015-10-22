@@ -1,8 +1,7 @@
 ---
-title: "Readmefor Johns Hopkins course "Getting and Cleaning Data" on Coursera"
+title: "Readme for Johns Hopkins course "Getting and Cleaning Data" on Coursera"
 author: "Jovan Milicevic"
-date: "October 20, 2015"
-output: html_document
+date: "October 22, 2015"
 ---
 
 Here is the explanation of every step needed in order to create run_analysis.R script that you can use to generate .csv file with tidy data which has average values per variable, grouped by subject and activity
