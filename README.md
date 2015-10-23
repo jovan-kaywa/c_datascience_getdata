@@ -117,7 +117,7 @@ testTrainFinalClean<-select(testTrainFinal,matches('std|mean|Activity|Subject'))
 testTrainFinalActivity <- merge(testTrainFinalClean, activity_labels, by.x = 'Activity', by.y = 'V1', all = FALSE)
 
 # rename last variable
-names(testTrainFinalActivity)[89] <- "activity"
+names(testTrainFinalActivity)[89] <- "Activity"
 
 # remove first variable
 # http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/
@@ -135,7 +135,7 @@ names(testTrainFinalActivityCopy) <-gsub("^f{1}","frequency",names(testTrainFina
 head(testTrainFinalActivityCopy)
 
 # 10. Make another dataset with grouped Subject and Activity variables
-activitySubjectGroups <- group_by(testTrainFinalActivityCopy,subject,activity)
+activitySubjectGroups <- group_by(testTrainFinalActivityCopy,Subject,Activity)
 
 # 11. Summarize each variable to get their mean values
 summary <- summarize_each(activitySubjectGroups,funs(mean))
@@ -143,7 +143,7 @@ summary <- summarize_each(activitySubjectGroups,funs(mean))
 # 12. Make tidy dataset
 # I decided to make a long tidy dataset
 # http://seananderson.ca/2013/10/19/reshape.html
-tidy <- melt(summary, id.vars = c("subject", "activity"))
+tidy <- melt(summary, id.vars = c("Subject", "Activity"))
 View(tidy)
 
 # 13. Create .csv table with tidy dataset 
