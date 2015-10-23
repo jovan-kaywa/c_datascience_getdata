@@ -15,10 +15,11 @@ Here is the explanation of every step needed in order to create run_analysis.R s
 6. Rename all variables with labels from the features.txt file
 7. Make variable names unique
 8. filter only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
-9. Make another dataset with grouped Subject and Activity variables
-10. Summarize each variable to get their mean values
-11. Make tidy dataset
-12. Create .csv table with tidy dataset
+9. make variable names more descriptive
+10. Make another dataset with grouped Subject and Activity variables
+11. Summarize each variable to get their mean values
+12. Make tidy dataset
+13. Create .csv table with tidy dataset
 
 ### My environment
 - OS X El Capitan
@@ -109,34 +110,44 @@ names(testTrainFinal) <- featuresFinal$V2
 valid_column_names <- make.names(names=names(testTrainFinal), unique=TRUE, allow_ = TRUE)
 names(testTrainFinal) <- valid_column_names
 
-# 8. filter only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
+# 8. Filter and rename only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
 testTrainFinalClean<-select(testTrainFinal,matches('std|mean|Activity|Subject'))
 
 # rename activity to use descriptive activity names
 testTrainFinalActivity <- merge(testTrainFinalClean, activity_labels, by.x = 'Activity', by.y = 'V1', all = FALSE)
 
 # rename last variable
-names(testTrainFinalActivity)[89] <- "Activity"
+names(testTrainFinalActivity)[89] <- "activity"
 
 # remove first variable
 # http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/
 testTrainFinalActivity[[1]] <- NULL
 
-# 9. Make another dataset with grouped Subject and Activity variables
-activitySubjectGroups <- group_by(testTrainFinalActivity,Subject,Activity)
+# 9. make variable names more descriptive
+# create another dataset
+testTrainFinalActivityCopy <- testTrainFinalActivity
+# remove . and - from names of variables
+names(testTrainFinalActivityCopy) <-gsub("\\.|-","",names(testTrainFinalActivityCopy))
+# replace "t" on the start of the variable name with "time"
+names(testTrainFinalActivityCopy) <-gsub("^t{1}","time",names(testTrainFinalActivityCopy))
+# replace "f" on the start of the variable name with "frequency"
+names(testTrainFinalActivityCopy) <-gsub("^f{1}","frequency",names(testTrainFinalActivityCopy))
+head(testTrainFinalActivityCopy)
 
-# 10. Summarize each variable to get their mean values
+# 10. Make another dataset with grouped Subject and Activity variables
+activitySubjectGroups <- group_by(testTrainFinalActivityCopy,subject,activity)
+
+# 11. Summarize each variable to get their mean values
 summary <- summarize_each(activitySubjectGroups,funs(mean))
 
-# 11. Make tidy dataset
+# 12. Make tidy dataset
 # I decided to make a long tidy dataset
 # http://seananderson.ca/2013/10/19/reshape.html
-tidy <- melt(summary, id.vars = c("Subject", "Activity"))
+tidy <- melt(summary, id.vars = c("subject", "activity"))
 View(tidy)
 
-# 12. Create .csv table with tidy dataset 
+# 13. Create .csv table with tidy dataset 
 write.table(tidy,file = "getdatatidy.csv", row.name=FALSE)
-
 ```
 ## Links:
 [Getting and Cleaning Data](https://www.coursera.org/course/getdata)

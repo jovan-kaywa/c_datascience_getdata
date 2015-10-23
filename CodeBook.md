@@ -25,7 +25,7 @@ For each record it is provided:
 
 ## Creating the tidy datafile
 
-### Guide to create the tidy data file
+###Guide to create the tidy data file
 1. Download the [dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 2. Unpack it in your working directory (you can also just run the script and it will download and unpack the files)
 3. Merge training set, subjects and activites
@@ -33,11 +33,12 @@ For each record it is provided:
 5. Merge test and training sets
 6. Rename all variables with labels from the features.txt file
 7. Make variable names unique
-8.filter only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
-9. Make another dataset with grouped Subject and Activity variables
-10. Summarize each variable to get their mean values
-11. Make tidy dataset
-12. Create .csv table with tidy dataset
+8. filter only needed columns with standard deviation and mena in name, and keep Activity and Subject variables too
+9. make variable names more descriptive
+10. Make another dataset with grouped Subject and Activity variables
+11. Summarize each variable to get their mean values
+12. Make tidy dataset
+13. Create .csv table with tidy dataset
 
 ### Cleaning of the data
 During the cleaning process, only variables that contains data about Average and Standard devitation are kept. [Please check the readme file for all details](https://github.com/jovan-kaywa/c_datascience_getdata/blob/master/README.md)
