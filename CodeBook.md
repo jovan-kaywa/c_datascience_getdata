@@ -88,6 +88,8 @@ The set of variables that were estimated from these signals are:
 - mean(): Mean value
 - std(): Standard deviation
 
+**All variables, except Subject and Activity, represent their average value.**
+
 ## Sources
 [Getting and Cleaning Data](https://www.coursera.org/course/getdata)
 
